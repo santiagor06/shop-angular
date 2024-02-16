@@ -3,16 +3,7 @@
     class="w-full flex flex-wrap items-center justify-between mx-auto py-4"
   >
     <div class="flex items-center space-x-8">
-      <a href="https://flowbite.com/" class="flex items-center ">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-6 mr-3"
-          alt="Flowbite Logo"
-        />
-        <span class="self-center text-xl font-semibold whitespace-nowrap"
-          >Flowbite</span
-        >
-      </a>
+
       <ul class="flex space-x-6">
         <li>
           <a
@@ -39,7 +30,8 @@
       </ul>
     </div>
     <div class="flex items-center">
-      <button class="px-4">
+      <button (click)="handleOpenCart()" class="p-e relative ">
+        <div class="absolute -top-2 -left-2 rounded h-4 w-4 bg-black text-white text-xs">{{cart.length}}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -58,3 +50,4 @@
     </div>
   </div>
 </nav>
+<app-cart (openCart)="takeChild()" [cart]="cart" [isOpenCart]="isCartOpen()"/>
