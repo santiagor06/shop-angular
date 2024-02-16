@@ -10,7 +10,7 @@ import { Product } from '../../models/Product.model';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Input({ required: true }) cart!: Product[];
+  @Input({ required: true }) cart: Product[] = [];
   isCartOpen = signal<boolean>(true);
   handleOpenCart() {
     this.isCartOpen.update((prevState) => !prevState);

@@ -22,9 +22,10 @@
     </button>
   </div>
   <div>
-    <div *ngFor="let product of cart">
-     <p>{{product.title}}</p>
-     <p>{{product.price}}</p>
-    </div>
+    <app-cart-item *ngFor="let product of cart" [product]="product"/>
   </div>
+  <p>Total: $<span>{{total()}}</span></p>
+
+
+
 </div>
