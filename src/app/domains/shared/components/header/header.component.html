@@ -31,7 +31,7 @@
     </div>
     <div class="flex items-center">
       <button (click)="handleOpenCart()" class="p-e relative ">
-        <div class="absolute -top-2 -left-2 rounded h-4 w-4 bg-black text-white text-xs">{{cart.length}}</div>
+        <div class="absolute -top-2 -left-2 rounded h-4 w-4 bg-black text-white text-xs">{{cart().length}}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -50,4 +50,4 @@
     </div>
   </div>
 </nav>
-<app-cart (openCart)="takeChild()" [cart]="cart" [isOpenCart]="isCartOpen()"/>
+<app-cart />

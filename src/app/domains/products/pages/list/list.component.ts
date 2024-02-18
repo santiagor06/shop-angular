@@ -74,8 +74,4 @@ export class ListComponent {
     this.products.set(initialData);
   }
   products = signal<Product[]>([]);
-  cart = signal<Product[]>([]);
-  addToCart(product: Product) {
-    this.cart.update((cart) => [...cart, product]);
-  }
 }

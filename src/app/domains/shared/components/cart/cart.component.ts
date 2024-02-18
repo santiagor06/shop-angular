@@ -5,11 +5,13 @@ import {
   Output,
   SimpleChange,
   SimpleChanges,
+  inject,
   signal,
 } from '@angular/core';
 import { Product } from '../../models/Product.model';
 import { CommonModule } from '@angular/common';
 import { CartItemComponent } from '../cart-item/cart-item.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -19,21 +21,11 @@ import { CartItemComponent } from '../cart-item/cart-item.component';
   styleUrl: './cart.component.css',
 })
 export class CartComponent {
-  @Output() openCart = new EventEmitter();
-  @Input({ required: true }) isOpenCart!: boolean;
-  @Input({ required: true }) cart: Product[] = [];
-  total = signal(0);
-  ngOnChanges(changes: SimpleChanges) {
-    let cart = changes['cart'];
-    if (cart) {
-      this.total.set(this.getTotal());
-    }
-  }
-
+  private cartService = inject(CartService);
+  isOpenCart = this.cartService.isCartOpen;
+  cart = this.cartService.cart;
+  total = this.cartService.total;
   handleOpenCart() {
-    this.openCart.emit();
-  }
-  getTotal(): number {
-    return this.cart.reduce((total, product) => total + product.price, 0);
+    this.cartService.handleOpenCart();
   }
 }

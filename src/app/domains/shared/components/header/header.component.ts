@@ -1,6 +1,7 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, inject, signal } from '@angular/core';
 import { CartComponent } from '../cart/cart.component';
 import { Product } from '../../models/Product.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,10 @@ import { Product } from '../../models/Product.model';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Input({ required: true }) cart: Product[] = [];
-  isCartOpen = signal<boolean>(true);
+  private cartService = inject(CartService);
+  cart = this.cartService.cart;
+
   handleOpenCart() {
-    this.isCartOpen.update((prevState) => !prevState);
-  }
-  takeChild() {
-    this.isCartOpen.update((prevstate) => !prevstate);
+    this.cartService.handleOpenCart();
   }
 }

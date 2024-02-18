@@ -1,5 +1,13 @@
-import { Component, EventEmitter, Input, Output, input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  inject,
+  input,
+} from '@angular/core';
 import { Product } from '../../../shared/models/Product.model';
+import { CartService } from '../../../shared/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -10,9 +18,9 @@ import { Product } from '../../../shared/models/Product.model';
 })
 export class ProductComponent {
   @Input({ required: true }) product!: Product;
+  private cartService = inject(CartService);
 
-  @Output() addToCart = new EventEmitter();
   handleAddToCart() {
-    this.addToCart.emit(this.product);
+    this.cartService.addToCart(this.product);
   }
 }
