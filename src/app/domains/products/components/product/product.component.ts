@@ -1,18 +1,14 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  inject,
-  input,
-} from '@angular/core';
-import { Product } from '../../../shared/models/Product.model';
-import { CartService } from '../../../shared/services/cart.service';
+import { CommonModule } from '@angular/common';
+import { Component, Input, inject } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
+import { Product } from '@shared/models/Product.model';
+import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
+import { CartService } from '@shared/services/cart.service';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, TimeAgoPipe, RouterLinkWithHref],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })

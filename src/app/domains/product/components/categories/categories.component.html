@@ -1,0 +1,10 @@
+<div class="mt-8">
+  <ol>
+    <li class="cursor-pointer font-light" routerLink="/"  >
+      ALL
+    </li>
+    <li class="cursor-pointer font-light" routerLink="/" [queryParams]="{categoryId:category.id}" *ngFor="let category of categories()" >
+      {{category.name | uppercase}}
+    </li>
+  </ol>
+</div>

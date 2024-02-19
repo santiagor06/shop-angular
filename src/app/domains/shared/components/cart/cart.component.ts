@@ -8,10 +8,9 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { Product } from '../../models/Product.model';
 import { CommonModule } from '@angular/common';
 import { CartItemComponent } from '../cart-item/cart-item.component';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '@shared/services/cart.service';
 
 @Component({
   selector: 'app-cart',
